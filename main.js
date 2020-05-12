@@ -39,7 +39,12 @@ class Player {
       this.center.x += 2;
     } else if (this.keyboarder.isDown(this.keyboarder.KEYS.LEFT)) {
       this.center.x -= 2;
-    }
+    } else if (this.keyboarder.isDown(this.keyboarder.KEYS.UP)) {
+      this.center.y += 2;
+    } else if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN)) {
+      this.center.y -= 2;
+    } 
+
   }
 }
 
