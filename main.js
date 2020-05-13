@@ -1,17 +1,19 @@
+const canvas = document.querySelector("#the-box");
+const context = canvas.getContext("2d");
+const gameSize = { x: canvas.width, y: canvas.height };
+const scale = 10;
+const rows = canvas.height / scale;
+const columns = canvas.width / scale;
+// console.log(context);
+
 class Game {
   constructor() {
-    let canvas = document.querySelector("#the-box");
-    let context = canvas.getContext("2d");
-    console.log(context);
-
-    let gameSize = { x: canvas.width, y: canvas.height };
     this.player = new Player(gameSize);
-    this.coin = new Coin(gameSize)
-
+    this.coin = new Coin(gameSize);
+    this.drawCoin(context,gameSize)
     let animate = () => {
       this.update();
       this.drawPlayer(context, gameSize);
-      this.drawCoin(context, gameSize)
       requestAnimationFrame(animate);
     };
     animate();
@@ -30,15 +32,16 @@ class Game {
   drawCoin(context, gameSize) {
     // context.clearRect(0, 0, gameSize.x, gameSize.y);
     context.fillStyle = "#cc7f04";
-    let startingX = this.coin.center.x - this.coin.size.x / 2;
-    let startingY = this.coin.center.y - this.coin.size.y - 2;
-    let playerWidth = this.coin.size.x;
-    let playerHeight = this.coin.size.y;
-    context.fillRect(startingX, startingY, playerWidth, playerHeight);
+    let startingX = Math.floor(Math.random() * canvas.width)
+    let startingY = Math.floor(Math.random() * canvas.height)
+    let coinWidth = this.coin.size.x;
+    let coinHeight = this.coin.size.y;
+    context.fillRect(startingX, startingY, coinWidth, coinHeight);
   }
 
   update() {
     this.player.update();
+    this.drawCoin
   }
 }
 
@@ -66,11 +69,16 @@ class Player {
 
 class Coin {
    constructor(gameSize, center) {
-    //    this.game = game
        this.center = center
        this.size = {x: 20, y: 20}
        this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
+    }
+
+    update(){
+        if ("coin is taken"){
+           drawCoin(context,gameSize) 
         }
+    }
     
 }
 
