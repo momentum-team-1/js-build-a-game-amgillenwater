@@ -10,10 +10,9 @@ class Game {
   constructor() {
     this.player = new Player(gameSize);
     this.coin = new Coin(gameSize);
-    this.drawCoin(context,gameSize)
     let animate = () => {
-      this.update();
       this.drawPlayer(context, gameSize);
+      this.update();
       requestAnimationFrame(animate);
     };
     animate();
@@ -34,14 +33,13 @@ class Game {
     context.fillStyle = "#cc7f04";
     let startingX = Math.floor(Math.random() * canvas.width)
     let startingY = Math.floor(Math.random() * canvas.height)
-    let coinWidth = this.coin.size.x;
-    let coinHeight = this.coin.size.y;
+    let coinWidth = 15;
+    let coinHeight = 15;
     context.fillRect(startingX, startingY, coinWidth, coinHeight);
   }
 
   update() {
     this.player.update();
-    this.drawCoin
   }
 }
 
@@ -61,24 +59,19 @@ class Player {
       this.center.y -= 2;
     } else if (this.keyboarder.isDown(this.keyboarder.KEYS.DOWN)) {
       this.center.y += 2;
-    } 
+    }
     
   }
+  
 
   }
 
 class Coin {
-   constructor(gameSize, center) {
-       this.center = center
-       this.size = {x: 20, y: 20}
-       this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
-    }
-
-    update(){
-        if ("coin is taken"){
-           drawCoin(context,gameSize) 
-        }
-    }
+//    constructor(gameSize, center) {
+//        this.center = center
+//        this.size = {x: 15, y: 15}
+//        this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
+//     }
     
 }
 
