@@ -2,11 +2,6 @@ const canvas = document.querySelector("#the-box");
 const context = canvas.getContext("2d");
 const gameSize = { x: canvas.width, y: canvas.height };
 
-function randomNum (min, max) {
-  return Math.floor(Math.random() * (max + 1 - min)) + min
-}
-randomNum()
-
 class Game {
   constructor() {
     this.player = new Player(gameSize);
@@ -86,11 +81,20 @@ class Coin {
    constructor(gameSize, center) {
        this.center = center
        this.size = {x: 20, y: 20}
-       this.center = { x: gameSize.x / 2, y: gameSize.y - this.size.y * 2 };
+       this.center = { x: randomNum(175,275), y: randomNum(175,275) };
+    
+
+    
     }
+
+
     
 }
 
+function randomNum (min, max) {
+  return Math.floor(Math.random() * (max + 1 - min)) + min
+}
+randomNum(175,275)
 
 new Game();
 
